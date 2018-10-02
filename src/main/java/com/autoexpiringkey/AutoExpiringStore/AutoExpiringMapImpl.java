@@ -49,6 +49,7 @@ public class AutoExpiringMapImpl<K, V> implements AutoExpiringMap<K, V> {
 	}*/
 	
 	private AutoExpiringMapImpl(int initialCapacity, long maxLifeTime) {
+		//ConcurrentHashMap to make it thread safe
 		internalMap = new ConcurrentHashMap(initialCapacity);
 		expiringKeyMap = new WeakHashMap<K, AutoExpiringKey<K>>(initialCapacity);
 		this.maxLifeTime=maxLifeTime;
